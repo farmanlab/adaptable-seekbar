@@ -42,10 +42,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:${ktx_support}"
     implementation 'androidx.core:core-ktx:1.1.0-alpha05'
+    implementation "com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:1.0.0"
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
 }
 
 uploadArchives {
@@ -54,7 +55,7 @@ uploadArchives {
             repository url: "file://${repo.absolutePath}"
             pom.version = version             // version
             pom.groupId = 'com.farmanlab'    // グループ名
-            pom.artifactId = 'adaptabke-seek-bar' // ライブラリ名
+            pom.artifactId = 'adaptable-seek-bar' // ライブラリ名
         }
     }
 }

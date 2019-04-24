@@ -1,5 +1,6 @@
-package com.farmanlab.wifiautoswitcher.util.widget
+package com.farmanlab.adaptableseekbar
 
+import android.widget.SeekBar
 import kotlin.apply
 import kotlin.collections.first
 import kotlin.collections.getOrNull
@@ -12,16 +13,16 @@ class AdaptableSeekBarAdapter<T> {
     internal var seekBar: androidx.appcompat.widget.AppCompatSeekBar? = null
         set(value) {
             field = value?.apply {
-                setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekBar: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                         listener?.onProgressChanged(this@apply, itemList[progress], progress, fromUser)
                     }
 
-                    override fun onStartTrackingTouch(seekBar: android.widget.SeekBar?) {
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
                         listener?.onStartTrackingTouch(this@apply)
                     }
 
-                    override fun onStopTrackingTouch(seekBar: android.widget.SeekBar?) {
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
                         listener?.onStopTrackingTouch(this@apply)
                     }
                 })
@@ -86,7 +87,7 @@ class AdaptableSeekBarAdapter<T> {
                     when {
                         it < min -> seekBar.progress = itemList.indexOf(min)
                         it > max -> seekBar.progress = itemList.indexOf(max)
-                        else -> timber.log.Timber.w("item can not match.")
+                        else -> Logger.w("item can not match.")
                     }
                 }
             } else {

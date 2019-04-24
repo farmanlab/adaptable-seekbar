@@ -1,11 +1,13 @@
 package com.farmanlab.adaptableseekbar
 
+import androidx.appcompat.widget.AppCompatSeekBar
+
 class AdaptableSeekBar @JvmOverloads constructor(
     context: android.content.Context,
     attr: android.util.AttributeSet? = null,
     defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatSeekBar(context, attr, defStyleAttr) {
-    var adapter: com.farmanlab.wifiautoswitcher.util.widget.AdaptableSeekBarAdapter<*>? = null
+) : AppCompatSeekBar(context, attr, defStyleAttr) {
+    var adapter: AdaptableSeekBarAdapter<*>? = null
         set(value) {
             field = value?.apply {
                 seekBar = this@AdaptableSeekBar

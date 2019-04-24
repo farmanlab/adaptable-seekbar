@@ -1,11 +1,13 @@
-package com.farmanlab.wifiautoswitcher.util.widget
+package com.farmanlab.adaptableseekbar
+
+import com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
 
 class VerticalAdaptableSeekBar @JvmOverloads constructor(
     context: android.content.Context,
     attr: android.util.AttributeSet? = null,
     defStyleAttr: Int = 0
-) : com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar(context, attr, defStyleAttr) {
-    var adapter: com.farmanlab.wifiautoswitcher.util.widget.AdaptableSeekBarAdapter<*>? = null
+) : VerticalSeekBar(context, attr, defStyleAttr) {
+    var adapter: AdaptableSeekBarAdapter<*>? = null
         set(value) {
             field = value?.apply {
                 seekBar = this@VerticalAdaptableSeekBar
@@ -19,7 +21,7 @@ class VerticalAdaptableSeekBar @JvmOverloads constructor(
 
     override fun setProgress(progress: Int) {
         if (adapter == null) {
-            timber.log.Timber.w("Adapter is null.")
+            Logger.w("Adapter is null.")
             super.setProgress(0)
             return
         }
@@ -29,7 +31,7 @@ class VerticalAdaptableSeekBar @JvmOverloads constructor(
 
     override fun setProgress(progress: Int, animate: Boolean) {
         if (adapter == null) {
-            timber.log.Timber.w("Adapter is null.")
+            Logger.w("Adapter is null.")
             super.setProgress(0, animate)
             return
         }
